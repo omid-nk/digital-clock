@@ -8,6 +8,10 @@ setInterval(() => {
   let minute = date.getMinutes();
   let second = date.getSeconds();
 
+  if (hour > 12) {
+    hour = 24 - hour;
+  }
+
   if (hour < 10) {
     hour = `0${hour}`;
   }
@@ -18,11 +22,36 @@ setInterval(() => {
     second = `0${second}`;
   }
 
-  if (hour > 12) {
-    hour = 24 - hour;
-  }
-
+  
   hoursElem.innerHTML = hour;
   minutesElem.innerHTML = minute;
   secondsElem.innerHTML = second;
 }, 1000);
+
+
+const date = new Date()
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June", 
+  "July", 
+  "August", 
+  "September", 
+  "October", 
+  "November", 
+  "December"
+]
+
+
+const day =date.getDate()
+const month = months[date.getMonth()]
+
+const dayElem = document.querySelector(".day")
+const monthElem = document.querySelector(".month")
+
+dayElem.innerHTML = day
+monthElem.innerHTML = month
